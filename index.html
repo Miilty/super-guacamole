@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentines Day</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .gradient-background {
+		background: linear-gradient(180deg, #5a0000 0%, #b11226 50%, #ff4d6d 100%);
+    }
+	
+	body {
+		background-image: url("./images/tulipes.jpg");
+		background-size: cover;       /* l’image couvre tout l’écran */
+		background-position: center;  /* centrée */
+		background-repeat: no-repeat; /* pas de répétition */
+		background-attachment: fixed; /* optionnel : effet parallaxe */
+		margin: 0;
+		min-height: 100vh;
+	}
+
+
+    .bounce2 {
+      animation: bounce2 2s ease infinite;
+    }
+
+    @keyframes bounce2 {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+	
+}
+  </style>
+</head>
+<body>
+  <div class="flex items-center justify-center h-screen">
+    <div class="flex flex-col items-center p-4">
+      <img id="imageDisplay" src="./images/image1.jpg" class="rounded-md h-[500px]" style="object-fit: cover;" />
+      <h2 id="valentineQuestion" class="text-4xl font-bold italic text-[#800020] my-4 bg-white px-6 py-3 rounded-lg inline-block">Will you be my Valentine?</h2>
+      <div class="flex gap-4 pt-[20px] items-center" id="responseButtons">
+        <button id="yesButton"
+          class="bounce2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium disabled:pointer-events-none disabled:opacity-50 hover:bg-green-400 min-h-12 min-w-[75px] px-4 py-2 bg-green-500 text-white transition">
+          Oui
+        </button>
+        <button id="noButton"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium transition disabled:pointer-events-none disabled:opacity-50 hover:bg-red-700 h-12 min-w-[75px] w-auto px-4 py-2 bg-red-500 text-white">
+          Non
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+    const yesButton = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+    const imageDisplay = document.getElementById('imageDisplay');
+    const valentineQuestion = document.getElementById('valentineQuestion');
+    const responseButtons = document.getElementById('responseButtons');
+  
+    let noClickCount = 0;
+    let buttonHeight = 48; 
+    let buttonWidth = 80;
+    let fontSize = 20; 
+    const imagePaths = [
+      "./i/image1.png",
+      "./images/image2.jpg",
+      "./images/image3.jpg",
+      "./images/image4.jpg",
+      "./images/image5.jpg",
+      "./images/image6.jpg",
+      "./images/image7.jpg"
+    ];
+  
+    noButton.addEventListener('click', function() {
+	function moveButtonRandomly() {
+      setInterval(() => {
+       let randomX = Math.random() * (window.innerWidth - noButton.clientWidth);
+       let randomY = Math.random() * (window.innerHeight - noButton.clientHeight);
+    
+       noButton.style.position = "absolute";
+       noButton.style.left = `${randomX}px`;
+       noButton.style.top = `${randomY}px`;
+      }, 1000); // Change de position toutes les 1s
+    }
+	
+	
+      if (noClickCount < 5) {
+        noClickCount++;
+        imageDisplay.src = imagePaths[noClickCount];
+        buttonHeight += 45; // Increase height by 5px on each click
+        buttonWidth += 45;
+        fontSize += 30; // Increase font size by 1px on each click
+        yesButton.style.height = `${buttonHeight}px`; // Update button height
+        yesButton.style.width = `${buttonWidth}px`;
+        yesButton.style.fontSize = `${fontSize}px`; // Update font size
+        if (noClickCount < 6) {
+          noButton.textContent = ["Non", "Tu vas pas dire non a kirby quand meme", "AUCUNE RACE", "u mean gurl", "j'ai compris il y a que VI pour te faire venir pff"][noClickCount];
+        }
+	    // Au 4e clic, le bouton commence à bouger
+        if (noClickCount === 3) {
+          moveButtonRandomly();
+        }			
+		// Au 6e clic, le bouton disparaît
+		if (noClickCount === 4) {
+		noButton.style.display = "none";
+		}
+      }
+    });
+  
+    yesButton.addEventListener('click', () => {
+      imageDisplay.src = './images/judy.jpg'; 
+      valentineQuestion.textContent = "BOULOOOOOOT "; 
+      responseButtons.style.display = 'none'; // Cache les boutons
+      confetti(); 
+	  confetti(); 
+	  confetti(); 
+	  confetti();
+	  confetti();
+    });
+  </script>  
+</body>
+</html>
