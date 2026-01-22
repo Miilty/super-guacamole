@@ -43,7 +43,7 @@
 <body>
   <div class="flex items-center justify-center h-screen">
     <div class="flex flex-col items-center p-4">
-      <img id="imageDisplay" src="./images/image1.jpg" class="rounded-md h-[500px]" style="object-fit: cover;" />
+      <img id="imageDisplay" src="./images/image1.jpg" class="rounded-md h-[400px]" style="object-fit: cover;" />
       <h2 id="valentineQuestion" class="text-4xl font-bold italic text-[#800020] my-4 bg-white px-6 py-3 rounded-lg inline-block">Will you be my Valentine?</h2>
       <div class="flex gap-4 pt-[20px] items-center" id="responseButtons">
         <button id="yesButton"
@@ -103,7 +103,7 @@
         yesButton.style.width = `${buttonWidth}px`;
         yesButton.style.fontSize = `${fontSize}px`; // Update font size
         if (noClickCount < 6) {
-          noButton.textContent = ["Non", "comment ça non, t'as capté le charisme", "OHH PER FAVORE MONTOYA ", "tu veux pas je sois ton pitre attitré", "j'ai compris il y a que VI pour te faire venir pff"][noClickCount];
+          noButton.textContent = ["Non", "Comment ça non, t'as vu le charisme ?!", "OHH PER FAVORE MONTOYA", "Aller, je serais ton pitre attitré"][noClickCount];
         }
 	    // Au 4e clic, le bouton commence à bouger
         if (noClickCount === 3) {
@@ -118,7 +118,7 @@
   
     yesButton.addEventListener('click', () => {
       imageDisplay.src = './images/judy.jpg'; 
-      valentineQuestion.textContent = "aller viens bb je t'enmmène "; 
+      valentineQuestion.textContent = "❤️ Rdv le 14 Me Amor ❤️"; 
       responseButtons.style.display = 'none'; // Cache les boutons
       confetti(); 
 	  confetti(); 
@@ -130,3 +130,4 @@
 </body>
 
 </html>
+
