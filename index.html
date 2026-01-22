@@ -103,7 +103,7 @@
         yesButton.style.width = `${buttonWidth}px`;
         yesButton.style.fontSize = `${fontSize}px`; // Update font size
         if (noClickCount < 6) {
-          noButton.textContent = ["Non", "Tu vas pas dire non a kirby quand meme", "AUCUNE RACE", "u mean gurl", "j'ai compris il y a que VI pour te faire venir pff"][noClickCount];
+          noButton.textContent = ["Non", "comment ça non, t'as capté le charisme", "OHH PER FAVORE MONTOYA ", "tu veux pas je sois ton pitre attitré", "j'ai compris il y a que VI pour te faire venir pff"][noClickCount];
         }
 	    // Au 4e clic, le bouton commence à bouger
         if (noClickCount === 3) {
@@ -118,7 +118,7 @@
   
     yesButton.addEventListener('click', () => {
       imageDisplay.src = './images/judy.jpg'; 
-      valentineQuestion.textContent = "BOULOOOOOOT "; 
+      valentineQuestion.textContent = "aller viens bb je t'enmmène "; 
       responseButtons.style.display = 'none'; // Cache les boutons
       confetti(); 
 	  confetti(); 
@@ -128,4 +128,5 @@
     });
   </script>  
 </body>
+
 </html>
